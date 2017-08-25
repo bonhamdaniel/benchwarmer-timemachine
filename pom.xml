@@ -2,8 +2,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>Benchwarmer</groupId>
   <artifactId>Benchwarmer</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -16,7 +16,7 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-war-plugin</artifactId>
+        <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.0</version>
         <configuration>
           <warSourceDirectory>WebContent</warSourceDirectory>
@@ -85,5 +85,5 @@
 		<artifactId>servlet-api</artifactId>
 		<version>3.0-alpha-1</version>
 	</dependency>
-  </dependencies>
+  </dependencies>	
 </project>
