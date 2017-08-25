@@ -20,6 +20,11 @@
         <version>3.0.0</version>
         <configuration>
           <jarSourceDirectory>WebContent</jarSourceDirectory>
+          <archive>
+          	<manifest>
+          		<mainClass>com.benchwarmer.spring.BenchwarmerController</mainClass>
+          	</manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
