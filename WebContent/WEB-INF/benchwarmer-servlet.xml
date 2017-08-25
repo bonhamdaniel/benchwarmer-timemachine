@@ -1,0 +1,62 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xsi:schemaLocation="
+ 	http://www.springframework.org/schema/beans     
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+ 	
+ 	<!-- Configuration describing base package -->
+	<context:component-scan base-package="com.benchwarmer.spring" />
+ 	
+ 	<!-- View file configuration -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+ 	
+ 	<!-- DB connection configuration -->
+ 	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+ 	<!--<property name="driverClassName" value="oracle.jdbc.OracleDriver" />-->
+ 	<!--<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />-->
+ 	<!--<property name="username" value="bonhamdaniel" />-->
+ 	<!--<property name="password" value="Smashword19" />-->
+ 	<!--</bean>-->
+ 	
+ 	<!-- DB connection configuration -->
+ 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="org.postgresql.Driver" />
+ 		<property name="url" value="jdbc:postgresql://localhost:5432/NHLdb" />
+ 		<property name="username" value="postgres" />
+ 		<property name="password" value="postgres" />
+ 	</bean>
+ 	
+ 	<!-- Hibernate configuration -->
+ 	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+ 		<property name="dataSource" ref="dataSource" />
+ 		<property name="configLocation" value="/WEB-INF/hibernate.cfg.xml" />
+ 		<property name="hibernateProperties">
+ 			<props>
+ 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</prop>
+ 				<prop key="hibernate.show_sql">true</prop>
+ 			</props>
+ 		</property>
+ 	</bean>
+ 	
+ 	<!-- DB transaction related configuration -->
+ 	<tx:annotation-driven />
+ 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+ 		<property name="sessionFactory" ref="sessionFactory" />
+ 	</bean>
+ 	
+ 	<mvc:resources mapping="/resources/**" location="/resources/" />
+ 	<mvc:annotation-driven />
+</beans>
