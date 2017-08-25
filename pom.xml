@@ -3,7 +3,7 @@
   <groupId>Benchwarmer</groupId>
   <artifactId>Benchwarmer</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -16,15 +16,10 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
+        <artifactId>maven-war-plugin</artifactId>
         <version>3.0.0</version>
         <configuration>
-          <jarSourceDirectory>WebContent</jarSourceDirectory>
-          <archive>
-          	<manifest>
-          		<mainClass>com.benchwarmer.spring.BenchwarmerController</mainClass>
-          	</manifest>
-          </archive>
+          <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
       </plugin>
     </plugins>
