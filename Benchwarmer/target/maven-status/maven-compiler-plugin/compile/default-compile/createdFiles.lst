@@ -1,9 +1,0 @@
-com\benchwarmer\spring\model\Season.class
-com\benchwarmer\spring\model\Goalieseasons.class
-com\benchwarmer\spring\model\Skaterseasons.class
-com\benchwarmer\spring\model\SeasonId.class
-com\benchwarmer\spring\service\SeasonServiceImpl.class
-com\benchwarmer\spring\dao\SeasonDAOImpl.class
-com\benchwarmer\spring\dao\SeasonDAO.class
-com\benchwarmer\spring\service\SeasonService.class
-com\benchwarmer\spring\BenchwarmerController.class
