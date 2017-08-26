@@ -59,5 +59,9 @@ $('#statsview').ready(function() {
 		if(($('[name="baseSeason"] option:selected').text() != $('[name="targetSeason"] option:selected').text()) && ($('#season1 option:selected').text() != "All")) $("#include").prop("disabled", false);
 		else $("#include").prop("disabled", true);
 	}));
+	$(document).on('change', '.player', (function(event) {
+		if((($('[name="player1"] option:selected').getPosition() == "G") && ($('[name="player2"] option:selected').getPosition() != "G")) || (($('[name="player1"] option:selected').getPosition() != "G") && ($('[name="player2"] option:selected').getPosition() == "G"))) $("#compare").prop("disabled", false);
+		else $("#compare").prop("disabled", true);
+	}));
 });
 

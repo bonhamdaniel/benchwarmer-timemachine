@@ -40,7 +40,7 @@
 					<option value="${playerid}">${playerbios[player.index].playerName}</option>
 				</c:if>
 				<c:if test="${playerid == p1.playerid}">
-					<option value="${playerid}" selected>${playerbios[player.index].playerName}</option>
+					<option value="${playerbios[player.index]}" selected>${playerbios[player.index].playerName}</option>
 				</c:if>
 			</c:forEach>
 		</select>
