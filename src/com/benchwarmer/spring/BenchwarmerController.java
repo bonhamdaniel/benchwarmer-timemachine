@@ -51,7 +51,7 @@ public class BenchwarmerController {
 		return players;
 	}
 	
-	@RequestMapping("/timemachine")
+	@RequestMapping("/")
 	public String timemachine(@ModelAttribute("seasons") List<Season> seasons, @ModelAttribute("baseS") int baseS, @ModelAttribute("targetS") int targetS, @ModelAttribute("min") int min) {
 		return "timemachine";
 	}
