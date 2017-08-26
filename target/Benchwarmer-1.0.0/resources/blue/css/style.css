@@ -59,6 +59,10 @@ div.tab {
 	height: 20px;
 }
 
+div.tab a {
+	text-decoration: none;
+}
+
 div.tab button {
 	width: 25%;
 	background-color: inherit;
