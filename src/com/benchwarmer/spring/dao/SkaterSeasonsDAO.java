@@ -6,8 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.benchwarmer.spring.model.Season;
 import com.benchwarmer.spring.model.Skaterseasons;
 
 @Component

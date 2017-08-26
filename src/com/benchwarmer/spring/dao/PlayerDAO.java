@@ -6,9 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.benchwarmer.spring.model.Player;
-import com.benchwarmer.spring.model.Season;
 
 @Component
 @Transactional

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.benchwarmer.spring.dao.GoalieSeasonsDAO;
 import com.benchwarmer.spring.model.Goalieseasons;
-import com.benchwarmer.spring.model.Skaterseasons;
 
 @Component
 public class GoalieSeasonsService {

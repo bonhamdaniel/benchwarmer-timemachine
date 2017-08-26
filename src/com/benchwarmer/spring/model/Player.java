@@ -1,8 +1,6 @@
 package com.benchwarmer.spring.model;
 
 import java.util.Comparator;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

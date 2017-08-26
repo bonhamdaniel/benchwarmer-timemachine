@@ -2,10 +2,7 @@ package com.benchwarmer.spring;
 
 import java.util.Comparator;
 import java.util.List;
-
 import org.decimal4j.util.DoubleRounder;
-
-import com.benchwarmer.spring.model.Player;
 
 public class ConvertedSkater implements Comparable<ConvertedSkater> {
 	int rank = 0;

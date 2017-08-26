@@ -2,7 +2,6 @@ package com.benchwarmer.spring;
 
 import java.util.Comparator;
 import java.util.List;
-
 import org.decimal4j.util.DoubleRounder;
 
 public class ConvertedGoalie {

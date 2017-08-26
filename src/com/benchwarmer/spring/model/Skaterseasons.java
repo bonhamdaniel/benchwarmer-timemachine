@@ -2,8 +2,6 @@ package com.benchwarmer.spring.model;
 // default package
 // Generated Aug 5, 2017 5:24:43 PM by Hibernate Tools 5.2.3.Final
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
