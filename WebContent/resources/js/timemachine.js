@@ -9,12 +9,7 @@ function formatTable(column) {
 }
 
 function loadGoalieTable() {
-	$.ajax({
-		url: 'goalietable.html?baseSeason=20162017&targetSeason=20162017&sort=svpct&min=20',
-		success: function(data) {
-			$("#tableFrame").attr("src", data);
-		}
-	});
+	$("#tableFrame").attr("src", "goalietable.html?baseSeason=20162017&targetSeason=20162017&sort=svpct&min=20");
 }
 
 function loadSkaterTable() {
