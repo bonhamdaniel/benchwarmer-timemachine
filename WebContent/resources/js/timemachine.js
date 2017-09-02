@@ -21,7 +21,7 @@ function loadCompTable() {
 }
 
 function loadTimeMachine() {
-	$(this).attr("src", "timemachine.html");
+	$.get("timemachine.html");
 }
 
 $('#tableFrame').ready(function() {
