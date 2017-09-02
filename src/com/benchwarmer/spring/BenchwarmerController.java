@@ -154,7 +154,7 @@ public class BenchwarmerController {
 		return "goalietable"; // directs to goalie table view
 	} // goalietable()
 	
-	@RequestMapping(value = "/validatecomparator", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/validatecomparator", method = RequestMethod.GET)
 	public @ResponseBody String validatecomparator(@RequestParam("player1") String player1, @RequestParam("player2") String player2, @ModelAttribute("searchableplayers") Map<Integer, Player> searchableplayers) {
 		String result;
 		Player p1 = searchableplayers.get(Integer.parseInt(player1)); // retrieves user-specified player to be used for comparison
