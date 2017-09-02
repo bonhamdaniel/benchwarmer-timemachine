@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html">
@@ -35,9 +34,6 @@
 		<br>
 		<label>Player #1</label>
 		<select id="player1" class="player" name="player1">
-			<form:select path="playerName">
-				<form:options items="${playerbios}" />
-			</form:select>
 			<c:forEach items="${playerbios}" varStatus="player">
 				<c:set var="playerid" value="${playerbios[player.index].playerid}" />
 				<c:if test="${playerid != p1.playerid}">
