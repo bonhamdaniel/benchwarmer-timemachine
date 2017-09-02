@@ -20,16 +20,16 @@
 		<h4>What would Gretzky's stats look like in today's NHL?
 		How many points could Crosby have put up in the high-flying 80's?
 		Where does Price rank among the great goalies of the recent past?</h4>
-		<h4>Use the NHL Time Machine to find out!</h4>
+		<h4><em>Use the NHL Time Machine to find out!</em></h4>
 		<p><b>Option #1</b> - click 'skaters' or 'goalies' to adjust any individual season since
 		   1987/88 to the production rates of any other season in that timeframe.  Alternatively, choose "All" to translate every
-		   available season and see how players from the different eras truly measure up.</p>
+		   available season and see how players from the different eras measure up.</p>
 		<div class="list">	
 			<ol>
 				<li>Select the season(s) you wish to adjust
 				<li>Select the season to use as a baseline (production rates)
 				<li>Set the minimum games played filter
-				<li>Check 'include' to display player stats from the baseline season
+				<li>Check 'include' if you wish to display player stats from the baseline season
 				<li>Click 'Convert'
 			</ol>
 		</div>
@@ -38,7 +38,7 @@
 			<ol>
 				<li>Select the season to use as a baseline (production rates)
 				<li>Select the two players you wish to compare
-				<li>Check 'include' to display each of the players individual seasons instead of career totals
+				<li>Check 'include' if you wish to display each player's individual seasons instead of their career totals
 				<li>Click 'Convert'
 			</ol>
 		</div>
