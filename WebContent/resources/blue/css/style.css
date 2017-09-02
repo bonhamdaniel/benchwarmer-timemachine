@@ -112,6 +112,7 @@ div.tab button {
 	margin: 0px;
 	font-size: 1em;
 	vertical-align: center;
+	border-radius: 4px;
 }
 
 div.tab button:hover {
