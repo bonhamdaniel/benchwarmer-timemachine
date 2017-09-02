@@ -26,8 +26,8 @@ function loadTimeMachine() {
 }
 
 function checkComparison() {
-	var player1 = $('[name="player1"] option:selected').text()
-	var player2 = $('[name="player2"] option:selected').text()
+	var player1 = $('[name="player1"] option:selected').val()
+	var player2 = $('[name="player2"] option:selected').val()
 	alert(player1 + " " + player2);
 	$.get("validatecomparator.html", { player1:player1, player2:player2 }, function(data) {
 		if(data) return true;
