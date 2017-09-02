@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.benchwarmer.spring.service.GoalieSeasonsService;
 import com.benchwarmer.spring.service.PlayerService;
@@ -152,6 +153,17 @@ public class BenchwarmerController {
 		model.addAttribute("min", min); // sets user-specified minimum games played for filtering to model
 		return "goalietable"; // directs to goalie table view
 	} // goalietable()
+	
+	@RequestMapping(value = "/validatecomparator", method = RequestMethod.GET)
+	public @ResponseBody boolean validatecomparator(@RequestParam("player1") String player1, @RequestParam("player2") String player2, @ModelAttribute("searchableplayers") Map<Integer, Player> searchableplayers) {
+		Player p1 = searchableplayers.get(Integer.parseInt(player1)); // retrieves user-specified player to be used for comparison
+		Player p2 = searchableplayers.get(Integer.parseInt(player2)); // retrieves user-specified player to be used for comparison
+		System.out.println(p1.getPlayerName());
+		if ((p1.getPosition().equals("G") && !p2.getPosition().equals("G")) || (p2.getPosition().equals("G") && !p1.getPosition().equals("G"))) { // handles incomparable data
+			return false;
+		} // if (incomparable data)
+		return true;
+	} // validatecomparator()
 	
 	@RequestMapping(value = "/comptable", method = RequestMethod.GET) // handles view for the presentation of player comparison data
 	public String comptable(HttpServletRequest request, @RequestParam Map<String, String> params, Model model, @ModelAttribute("players") List<ConvertedSkater> players, @ModelAttribute("goalies") List<ConvertedGoalie> goalies, @ModelAttribute("searchableplayers") Map<Integer, Player> searchableplayers) {

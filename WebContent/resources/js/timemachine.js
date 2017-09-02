@@ -25,6 +25,13 @@ function loadTimeMachine() {
 	$("#tableFrame").attr("src", "intro.html");
 }
 
+function checkComparison() {
+	$.get("validatecomparator.html", { player1:$('#p1ayer1').val(), player2:$('#p1ayer2').val() }, function(data) {
+		if(data) $("#tableFrame").attr("src", "comptable.html");
+		else alert("Cannot compare a goalie with a skater");
+	});
+}
+
 $('#tableFrame').ready(function() {
 	var recordPerPage = 25;
 	var totalRows = $('#count').val();
