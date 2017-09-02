@@ -35,7 +35,7 @@
 		<br>
 		<label>Player #1</label>
 		<select id="player1" class="player" name="player1">
-			<form:select>
+			<form:select path="playerName">
 				<form:options items="${playerbios}" />
 			</form:select>
 			<c:forEach items="${playerbios}" varStatus="player">
