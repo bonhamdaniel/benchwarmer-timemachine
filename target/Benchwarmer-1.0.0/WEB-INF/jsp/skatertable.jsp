@@ -22,7 +22,12 @@
 		<input id="count" type="hidden" value="${players.size()}" />
 		<input id="sort" type="hidden" name="sort" value="${sort}" />
 		<table border="1" cellpadding="5">
-	    	<caption>${baseS} adjusted to ${targetS} rates</caption>
+			<c:if test="${baseS == targetS}">
+				<caption>Raw ${baseS} Stats</caption>
+			</c:if>
+			<c:if test="${baseS != targetS}">
+				<caption>Stats Adjusted to ${targetS} Rates</caption>
+			</c:if>	    	
 	        <tr>
 	        	<th>Rank</th>
 	        	<th class="player" onclick="sortSkaters('player')">Player</th>

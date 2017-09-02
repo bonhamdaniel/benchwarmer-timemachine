@@ -49,7 +49,7 @@
 		</select>
 		<label>production rates</label>
 		<br>
-		<label>Min GP: </label><input type="number" name="min" min="0" max="82" value="20">
+		<label>Min GP: </label><input type="number" name="min" min="0" max="82" value="20" width="3">
 		<input id="include" type="checkbox" name="include" disabled />Include goalies from target season
 		<br>
 		<input type="hidden" name="sort" value="svpct" />

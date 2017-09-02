@@ -20,9 +20,12 @@ function loadCompTable() {
 	$("#tableFrame").attr("src", "comptable.html?baseSeason=20162017&player1=8478550&player2=8476453&sort=pts");
 }
 
-function loadWelcome() {
-	$(document).attr("src", "timemachine.html");
+function loadTimeMachine() {
+	$("#statsview").attr("src", "welcome.html");
+	$("#tableFrame").attr("src", "intro.html");
 }
+
+
 
 $('#tableFrame').ready(function() {
 	var recordPerPage = 25;
@@ -62,6 +65,18 @@ $('#statsview').ready(function() {
 	$(document).on('change', '.season', (function(event) {
 		if(($('[name="baseSeason"] option:selected').text() != $('[name="targetSeason"] option:selected').text()) && ($('#season1 option:selected').text() != "All")) $("#include").prop("disabled", false);
 		else $("#include").prop("disabled", true);
+	}));
+	
+	$(document).on('change', '.player', (function() {
+		var player1 = $('[name="player1"] option:selected').val()
+		var player2 = $('[name="player2"] option:selected').val()
+		var result = "false"
+		$.get("validatecomparator.html", { player1:player1, player2:player2 }, function(data) {
+			if(data == "true") $("#compare").prop("disabled", false);
+			else {
+				$("#compare").prop("disabled", true);
+			}
+		});
 	}));
 });
 
