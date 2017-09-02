@@ -163,7 +163,7 @@ public class BenchwarmerController {
 		if ((p1.getPosition().equals("G") && !p2.getPosition().equals("G")) || (p2.getPosition().equals("G") && !p1.getPosition().equals("G"))) { // handles incomparable data
 			 result = "false";
 		} // if (incomparable data)
-		result = "true";
+		else result = "true";
 		return result;
 	} // validatecomparator()
 	
