@@ -73,18 +73,19 @@ div.welcome {
 
 div.intro h4 {
 	color: #00004d;
+	text-align: center;
 }
 
 div.intro {
 	margin: auto;
 	width: 67%;
 	color: #00004d;
-	text-align: center;
+	text-align: left;
 }
 
 div.list {
 	margin: auto;
-	width: 90%;
+	width: 67%;
 	text-align: left;
 }
 

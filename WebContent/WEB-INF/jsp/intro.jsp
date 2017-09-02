@@ -17,12 +17,13 @@
 </head>
 <body>
 	<div id="introduction" class="intro">
-		<h4>Ever wonder what Gretzky's stats would look like in today's NHL?</h4>
-		<h4>Or how many points Crosby could have put up in the high-flying 80's?</h4>
-		<p>Use the NHL Time Machine to find out!</p>
-		<p><b>Option #1</b> - click on either the "skaters" or "goalies" tab above to adjust any individual season since
+		<h4>What would Gretzky's stats look like in today's NHL?</h4>
+		<h4>How many points could Crosby have put up in the high-flying 80's?</h4>
+		<h4>Where does Price rank among the great goalies of the recent past?</h4>
+		<h4>Use the NHL Time Machine to find out!</h4>
+		<p><b>Option #1</b> - click 'skaters' or 'goalies' to adjust any individual season since
 		   1987/88 to the production rates of any other season in that timeframe.  Alternatively, choose "All" to translate every
-		   season and see how players from the different eras truly measure up.</p>
+		   available season and see how players from the different eras truly measure up.</p>
 		<div class="list">	
 			<ol>
 				<li>Select the season(s) you wish to adjust
@@ -32,7 +33,7 @@
 				<li>Click 'Convert'
 			</ol>
 		</div>
-		<p><b>Option #2</b> - click 'player comparator' to compare players head-to-head.
+		<p><b>Option #2</b> - click 'player comparator' to compare player's historical performances head-to-head.  
 		<div class="list">
 			<ol>
 				<li>Select the season to use as a baseline (production rates)
