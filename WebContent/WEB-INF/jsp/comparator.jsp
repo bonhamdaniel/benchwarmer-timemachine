@@ -17,7 +17,7 @@
 </head>
 <body>
 <div id="statOptions">
-	<form action="checkComparison()">
+	<form action="comptable.html" target="tableFrame" method="get" onsubmit="return checkComparison()">
 		<label>Compare players using </label>
 		<select name="baseSeason">
 			<c:forEach items="${seasons}" varStatus="season">
