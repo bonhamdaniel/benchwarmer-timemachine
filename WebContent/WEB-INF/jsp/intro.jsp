@@ -23,20 +23,24 @@
 		<p><b>Option #1</b> - click on either the "skaters" or "goalies" tab above to adjust any individual season since
 		   1987/88 to the production rates of any other season in that timeframe.  Alternatively, choose "All" to translate every
 		   season and see how players from the different eras truly measure up.</p>
-		<ul>
-			<li>Select the season(s) you wish to adjust
-			<li>Select the season to use as a baseline (production rates)
-			<li>Set the minimum games played filter
-			<li>Check 'include' to display player stats from the baseline season
-			<li>Press 'Convert'
-		</ul>
+		<div class="list">	
+			<ol>
+				<li>Select the season(s) you wish to adjust
+				<li>Select the season to use as a baseline (production rates)
+				<li>Set the minimum games played filter
+				<li>Check 'include' to display player stats from the baseline season
+				<li>Click 'Convert'
+			</ol>
+		</div>
 		<p><b>Option #2</b> - click 'player comparator' to compare players head-to-head.
-		<ul>
-			<li>Select the season to use as a baseline (production rates)
-			<li>Select the two players you wish to compare
-			<li>Check 'include' to display each of the players individual seasons instead of career totals
-			<li>Press 'Convert'
-		</ul>
+		<div class="list">
+			<ol>
+				<li>Select the season to use as a baseline (production rates)
+				<li>Select the two players you wish to compare
+				<li>Check 'include' to display each of the players individual seasons instead of career totals
+				<li>Click 'Convert'
+			</ol>
+		</div>
 		<p>All columns can be sorted by clicking on their respective headers</p>
 	</div>
 </body>

@@ -82,6 +82,12 @@ div.intro {
 	text-align: center;
 }
 
+div.list {
+	margin: auto;
+	width: 90%;
+	text-align: left;
+}
+
 div.tab {
 	background-color: white;
 	text-align: center;

@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="welcome">
-		<h3>NHL Time Machine</h3>
+		<h2>NHL Time Machine</h2>
 	</div>
 </body>
 </html>
