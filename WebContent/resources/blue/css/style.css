@@ -140,12 +140,24 @@ div.tab button.active {
 	background-color: #f2f2f2;
 	color: #00004d;
 	border-radius: 4px;
+	font-weight: bold;
+	text-align: center;
 }
 
 #statOptions input[type=submit] {
-	background-color: #00004d;
-	color: white;
+	background-color: white;
+	color: #00004d;
+	padding: 2px;
 	border-radius: 4px;
+	font-weight: bold;
+}
+
+#statOptions input[type=number] {
+	background-color: #f2f2f2;
+	color: #00004d;
+	border-radius: 4px;
+	font-weight: bold;
+	width: 5px;
 }
 
 div.stattable {
