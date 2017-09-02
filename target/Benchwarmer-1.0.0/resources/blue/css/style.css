@@ -136,12 +136,6 @@ div.tab button.active {
 	font-weight: bold;
 }
 
-#statOptions input[type=submit] {
-	background-color: #00004d;
-	color: white;
-	cursor: pointer;
-}
-
 div.stattable {
 	margin: auto;
 	min-height: 500px;
