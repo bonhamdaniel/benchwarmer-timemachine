@@ -26,7 +26,7 @@
 				<caption>Raw ${baseS} Stats</caption>
 			</c:if>
 			<c:if test="${baseS != targetS}">
-				<caption>${baseS} Stats Adjusted to ${targetS} Rates</caption>
+				<caption>Stats Adjusted to ${targetS} Rates</caption>
 			</c:if>	    	
 	        <tr>
 	        	<th>Rank</th>
