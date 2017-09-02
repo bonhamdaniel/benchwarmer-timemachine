@@ -24,7 +24,9 @@
 <body id="main">
 	<header>
 		<h2>benchwarmer</h2>
-		<div class="menu" onclick="loadWelcome">time machine</div>
+		<div class="menu">
+			<button onclick="loadTimeMachine()">time machine</button>
+		</div>
 	</header>
 	<div class="tab">
 		  	<a href="skaters.html" target="statsview">

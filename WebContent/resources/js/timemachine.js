@@ -20,7 +20,7 @@ function loadCompTable() {
 	$("#tableFrame").attr("src", "comptable.html?baseSeason=20162017&player1=8478550&player2=8476453&sort=pts");
 }
 
-function loadWelcome() {
+function loadTimeMachine() {
 	$(document).attr("src", "timemachine.html");
 }
 
