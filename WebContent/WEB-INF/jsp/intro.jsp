@@ -16,13 +16,28 @@
 <title>Benchwarmer Time Machine</title>
 </head>
 <body>
-	<div class="welcome">
+	<div id="introduction" class="welcome">
 		<h4>Ever wonder what Gretzky's stats would look like in today's NHL?</h4>
 		<h4>Or how many points Crosby could have put up in the high-flying 80's?</h4>
-		<p>Use the NHL Time Machine to find out! Click on the "skaters" or "goalies" tab above to adjust any individual season since
-		   1987/88 to the production rates of any other season in the same timeframe.  Or, choose "All" to adjust all seasons at once
-		   and see who comes out on top when stats are adjusted for their era.</p>
-		
+		<p>Use the NHL Time Machine to find out!</p>
+		<p>Option #1 - click on either the "skaters" or "goalies" tab above to adjust any individual season since
+		   1987/88 to the production rates of any other season in that timeframe.  Alternatively, choose "All" to translate every
+		   season and see how players from the different eras truly measure up.</p>
+		<ol>
+			<li>Select the season(s) you wish to adjust
+			<li>Select the season to use as a baseline (production rates)
+			<li>Set the minimum games played filter
+			<li>Check 'include' to display player stats from the baseline season
+			<li>Press 'Convert'
+		</ol>
+		<p>Option #2 - click 'player comparator' to compare players head-to-head.
+		<ol>
+			<li>Select the season to use as a baseline (production rates)
+			<li>Select the two players you wish to compare
+			<li>Check 'include' to display each of the players individual seasons instead of career totals
+			<li>Press 'Convert'
+		</ol>
+		<p>All columns can be sorted by clicking on their respective headers</p>
 	</div>
 </body>
 </html>

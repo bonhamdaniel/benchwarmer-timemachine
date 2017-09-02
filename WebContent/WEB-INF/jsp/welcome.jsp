@@ -18,7 +18,7 @@
 <body>
 	<div class="welcome">
 		<h3>NHL Time Machine</h3>
-		<p>Adjust NHL player stats to see how they translate to other eras</p>
+		<h6>Adjust NHL stats to the production rates of other eras</h6>
 	</div>
 </body>
 </html>

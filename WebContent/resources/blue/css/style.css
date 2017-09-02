@@ -70,6 +70,10 @@ div.welcome {
 	text-align: center;
 }
 
+#introduction {
+	width: 67%;
+}
+
 div.tab {
 	background-color: white;
 	text-align: center;
