@@ -23,7 +23,7 @@
 		<input id="sort" type="hidden" name="sort" value="${sort}" />
 		<table border="1" cellpadding="5">
 	    <c:if test="${baseS == targetS}">
-			<caption>Raw ${baseS} Stats</caption>caption>
+			<caption>Raw ${baseS} Stats</caption>
 		</c:if>
 		<c:if test="${baseS != targetS}">
 			<caption>${baseS} Stats Adjusted to ${targetS} Rates</caption>
