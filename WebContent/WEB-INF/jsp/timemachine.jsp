@@ -25,7 +25,7 @@
 	<header>
 		<h2>benchwarmer</h2>
 		<div class="menu">
-			<button onclick="loadTimeMachine()">time machine</button>
+			<button class="menuoption" onclick="loadTimeMachine()">time machine</button>
 		</div>
 	</header>
 	<div class="tab">

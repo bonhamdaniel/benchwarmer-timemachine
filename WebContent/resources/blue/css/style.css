@@ -52,6 +52,19 @@ header div {
 	font-size: .75em;
 }
 
+div.menu button {
+	width: 25%;
+	background-color: inherit;
+	color: white;
+	font-weight: bold;
+	text-transform: lowercase;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	margin: 0px;
+	font-size: 1em;
+	vertical-align: center;
+}
 
 div.tab {
 	background-color: white;
