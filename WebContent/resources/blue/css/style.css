@@ -136,6 +136,18 @@ div.tab button.active {
 	font-weight: bold;
 }
 
+#statOptions select {
+	background-color: #f2f2f2;
+	color: #00004d;
+	border-radius: 4px;
+}
+
+#statOptions input[type=submit] {
+	background-color: #00004d;
+	color: white;
+	border-radius: 4px;
+}
+
 div.stattable {
 	margin: auto;
 	min-height: 500px;
