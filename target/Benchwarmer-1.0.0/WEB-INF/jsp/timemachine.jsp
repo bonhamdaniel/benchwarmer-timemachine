@@ -40,7 +40,7 @@
 	<iframe id="statsview"
 			name="statsview"
 			width="100%"
-			height="70px"
+			height="75px"
 			src="skaters.html?baseSeason=20162017&targetSeason=20162017">
 	</iframe>
 	<iframe id="tableFrame"

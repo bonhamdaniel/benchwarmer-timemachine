@@ -60,3 +60,4 @@ $('#statsview').ready(function() {
 		else $("#include").prop("disabled", true);
 	}));
 });
+
