@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.benchwarmer.spring.service.GoalieSeasonsService;
 import com.benchwarmer.spring.service.PlayerService;
@@ -54,7 +55,17 @@ public class BenchwarmerController {
 		return players; // returns new player bio hashmap
 	} // searchableplayers()
 	
-	@RequestMapping({"/timemachine", "/" }) // handles initial loading of the application
+	@RequestMapping({"/welcome"}) // handles initial loading of the application
+	public String welcome(@ModelAttribute("seasons") List<Season> seasons, @ModelAttribute("baseS") int baseS, @ModelAttribute("targetS") int targetS, @ModelAttribute("min") int min) {
+		return "welcome";
+	} // welcome()
+	
+	@RequestMapping({"/intro"}) // handles initial loading of the application
+	public String intro(@ModelAttribute("seasons") List<Season> seasons, @ModelAttribute("baseS") int baseS, @ModelAttribute("targetS") int targetS, @ModelAttribute("min") int min) {
+		return "intro";
+	} // intro()
+	
+	@RequestMapping({"/timemachine"}) // handles initial loading of the application
 	public String timemachine(@ModelAttribute("seasons") List<Season> seasons, @ModelAttribute("baseS") int baseS, @ModelAttribute("targetS") int targetS, @ModelAttribute("min") int min) {
 		return "timemachine";
 	} // timemachine()
@@ -143,6 +154,18 @@ public class BenchwarmerController {
 		return "goalietable"; // directs to goalie table view
 	} // goalietable()
 	
+	@RequestMapping(value = "/validatecomparator", method = RequestMethod.GET)
+	public @ResponseBody String validatecomparator(@RequestParam("player1") String player1, @RequestParam("player2") String player2, @ModelAttribute("searchableplayers") Map<Integer, Player> searchableplayers) {
+		String result;
+		Player p1 = searchableplayers.get(Integer.parseInt(player1)); // retrieves user-specified player to be used for comparison
+		Player p2 = searchableplayers.get(Integer.parseInt(player2)); // retrieves user-specified player to be used for comparison
+		if ((p1.getPosition().equals("G") && !p2.getPosition().equals("G")) || (p2.getPosition().equals("G") && !p1.getPosition().equals("G"))) { // handles incomparable data
+			 result = "false";
+		} // if (incomparable data)
+		else result = "true";
+		return result;
+	} // validatecomparator()
+	
 	@RequestMapping(value = "/comptable", method = RequestMethod.GET) // handles view for the presentation of player comparison data
 	public String comptable(HttpServletRequest request, @RequestParam Map<String, String> params, Model model, @ModelAttribute("players") List<ConvertedSkater> players, @ModelAttribute("goalies") List<ConvertedGoalie> goalies, @ModelAttribute("searchableplayers") Map<Integer, Player> searchableplayers) {
 		int baseSeason = Integer.parseInt(params.get("baseSeason")); // retrieves user-specified base season to be used for player comparison
@@ -163,7 +186,7 @@ public class BenchwarmerController {
 				players = transformStats(p1Seasons, p2Seasons, baseSeason); // transforms both skater's data
 			} // else
 			sortSkaters(players, params.get("sort")); // sorts skater data based on user-specified column
-			model.addAttribute("targetS", baseSeason); // sets user-specified base season to model (uses targetS variable bc comparison data is calculated differently)
+			model.addAttribute("targetS", String.valueOf(baseSeason)); // sets user-specified base season to model (uses targetS variable bc comparison data is calculated differently)
 			model.addAttribute("p1", p1); // adds user-specified first comparable skater to model
 			model.addAttribute("p2", p2); // adds user-specified second comparable skater to model
 			model.addAttribute("players", players); // adds newly created skater transformation data to model 
@@ -182,7 +205,7 @@ public class BenchwarmerController {
 				goalies = transformGoalies(p1Seasons, p2Seasons, baseSeason); // transforms both goalie's data
 			} // else
 			sortGoalies(goalies, params.get("sort")); // sorts goalie data based on user-specified column
-			model.addAttribute("targetS", baseSeason); // sets user-specified base season to model (uses targetS variable bc comparison data is calculated differently)
+			model.addAttribute("targetS", String.valueOf(baseSeason)); // sets user-specified base season to model (uses targetS variable bc comparison data is calculated differently)
 			model.addAttribute("p1", p1); // adds user-specified first comparable goalie to model
 			model.addAttribute("p2", p2); // adds user-specified second comparable goalie to model
 			model.addAttribute("goalies", goalies); // adds newly created goalie transformation data to model 

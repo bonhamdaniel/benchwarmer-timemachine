@@ -30,7 +30,7 @@ header div {
 }
 
 #iframe {
-	overflow: hidden;
+	vertical-overflow: hidden;
 }
 
 #footer { 
@@ -52,6 +52,43 @@ header div {
 	font-size: .75em;
 }
 
+div.menu button {
+	width: 25%;
+	background-color: inherit;
+	color: white;
+	font-weight: bold;
+	text-transform: lowercase;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	margin: 0px;
+	font-size: 1em;
+	vertical-align: center;
+}
+
+div.welcome {
+	text-align: center;
+	color: black;
+}
+
+div.intro h4 {
+	color: black;
+	text-align: center;
+}
+
+div.intro {
+	margin: auto;
+	width: 50%;
+	color: black;
+	text-align: center;
+	align-content: center;
+}
+
+div.list {
+	margin: auto;
+	width: 80%;
+	text-align: left;
+}
 
 div.tab {
 	background-color: white;

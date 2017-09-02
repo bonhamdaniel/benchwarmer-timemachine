@@ -24,7 +24,7 @@
 <body id="main">
 	<header>
 		<h2>benchwarmer</h2>
-		<div class="menu">time machine</div>
+		<div class="menu" onclick="loadWelcome">time machine</div>
 	</header>
 	<div class="tab">
 		  	<a href="skaters.html" target="statsview">
@@ -40,14 +40,14 @@
 	<iframe id="statsview"
 			name="statsview"
 			width="100%"
-			height="70px"
-			src="skaters.html?baseSeason=20162017&targetSeason=20162017">
+			height="75px">
+		<h1>NHL Time Machine</h1>
 	</iframe>
 	<iframe id="tableFrame"
 				name="tableFrame"
 				width="100%" 
-				height="750px"
-				src="skatertable.html?baseSeason=20162017&targetSeason=20162017&sort=pts&min=20">
+				height="750px">
+		<h3>Ever wonder what Gretzky's 200 point seasons would be worth in today's era?</h3>
 	</iframe>
 	<div id="footer">
 		<address><a href="mailto:bonhamdaniel@gmail.com">e-mail benchwarmer</a></address>

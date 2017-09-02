@@ -40,8 +40,8 @@
 	<iframe id="statsview"
 			name="statsview"
 			width="100%"
-			height="70px"
-			src="skaters.html?baseSeason=20162017&targetSeason=20162017">
+			height="70px">
+			<h1>NHL Time Machine</h1>
 	</iframe>
 	<iframe id="tableFrame"
 				name="tableFrame"

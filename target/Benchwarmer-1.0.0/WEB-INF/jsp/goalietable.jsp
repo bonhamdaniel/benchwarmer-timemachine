@@ -22,7 +22,7 @@
 		<input id="count" type="hidden" value="${goalies.size()}" />
 		<input id="sort" type="hidden" name="sort" value="${sort}" />
 		<table border="1" cellpadding="5">
-	    <caption>Adjusted to ${targetS}</caption>
+	    <caption>{baseS} adjusted to ${targetS} rates</caption>
         <tr>
 	        <th>Rank</th>
         	<th class="player" onclick="sortGoalies('player')">Player</th>

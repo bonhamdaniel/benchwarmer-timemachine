@@ -20,6 +20,10 @@ function loadCompTable() {
 	$("#tableFrame").attr("src", "comptable.html?baseSeason=20162017&player1=8478550&player2=8476453&sort=pts");
 }
 
+function loadWelcome() {
+	$(document).attr("src", "timemachine.html");
+}
+
 $('#tableFrame').ready(function() {
 	var recordPerPage = 25;
 	var totalRows = $('#count').val();
@@ -60,3 +64,4 @@ $('#statsview').ready(function() {
 		else $("#include").prop("disabled", true);
 	}));
 });
+
