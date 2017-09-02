@@ -72,9 +72,9 @@ $('#statsview').ready(function() {
 		var player2 = $('[name="player2"] option:selected').val()
 		var result = "false"
 		$.get("validatecomparator.html", { player1:player1, player2:player2 }, function(data) {
-			if(data == "true") $("#include").prop("disabled", false);
+			if(data == "true") $("#compare").prop("disabled", false);
 			else {
-				$("#include").prop("disabled", true);
+				$("#compare").prop("disabled", true);
 			}
 		});
 	}));
