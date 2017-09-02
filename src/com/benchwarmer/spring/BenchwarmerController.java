@@ -54,6 +54,16 @@ public class BenchwarmerController {
 		return players; // returns new player bio hashmap
 	} // searchableplayers()
 	
+	@RequestMapping({"/welcome"}) // handles initial loading of the application
+	public String welcome(@ModelAttribute("seasons") List<Season> seasons, @ModelAttribute("baseS") int baseS, @ModelAttribute("targetS") int targetS, @ModelAttribute("min") int min) {
+		return "welcome";
+	} // welcome()
+	
+	@RequestMapping({"/intro"}) // handles initial loading of the application
+	public String intro(@ModelAttribute("seasons") List<Season> seasons, @ModelAttribute("baseS") int baseS, @ModelAttribute("targetS") int targetS, @ModelAttribute("min") int min) {
+		return "intro";
+	} // intro()
+	
 	@RequestMapping({"/timemachine"}) // handles initial loading of the application
 	public String timemachine(@ModelAttribute("seasons") List<Season> seasons, @ModelAttribute("baseS") int baseS, @ModelAttribute("targetS") int targetS, @ModelAttribute("min") int min) {
 		return "timemachine";

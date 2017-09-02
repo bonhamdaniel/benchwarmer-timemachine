@@ -42,14 +42,14 @@
 	<iframe id="statsview"
 			name="statsview"
 			width="100%"
-			height="75px">
-		<h1>NHL Time Machine</h1>
+			height="75px"
+			src="welcome.jsp">
 	</iframe>
 	<iframe id="tableFrame"
 				name="tableFrame"
 				width="100%" 
-				height="750px">
-		<h3>Ever wonder what Gretzky's 200 point seasons would be worth in today's era?</h3>
+				height="750px"
+				src="intro.html">
 	</iframe>
 	<div id="footer">
 		<address><a href="mailto:bonhamdaniel@gmail.com">e-mail benchwarmer</a></address>

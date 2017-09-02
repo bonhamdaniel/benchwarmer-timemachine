@@ -21,7 +21,8 @@ function loadCompTable() {
 }
 
 function loadTimeMachine() {
-	window.location = "timemachine.html";
+	$("#statsview").attr("src", "welcome.html");
+	$("#tableFrame").attr("src", "intro.html");
 }
 
 $('#tableFrame').ready(function() {
