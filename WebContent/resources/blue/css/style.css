@@ -112,6 +112,7 @@ div.tab button {
 	margin: 0px;
 	font-size: 1em;
 	vertical-align: center;
+	border-radius: 2px;
 }
 
 div.tab button:hover {
@@ -134,6 +135,29 @@ div.tab button.active {
 
 #statOptions label {	
 	font-weight: bold;
+}
+
+#statOptions select {
+	background-color: #f2f2f2;
+	color: #00004d;
+	border-radius: 4px;
+	text-align: center;
+}
+
+#statOptions input[type=submit] {
+	background-color: #f2f2f2;
+	color: #00004d;
+	cursor: pointer;
+	padding: 3px;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+#statOptions input[type=number] {
+	background-color: #f2f2f2;
+	color: #00004d;
+	border-radius: 4px;
+	width: 50px;
 }
 
 div.stattable {
