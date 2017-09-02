@@ -43,7 +43,7 @@
 			name="statsview"
 			width="100%"
 			height="75px"
-			src="welcome.jsp">
+			src="welcome.html">
 	</iframe>
 	<iframe id="tableFrame"
 				name="tableFrame"

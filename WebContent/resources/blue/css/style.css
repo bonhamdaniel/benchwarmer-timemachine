@@ -66,6 +66,10 @@ div.menu button {
 	vertical-align: center;
 }
 
+div.welcome {
+	text-align: center;
+}
+
 div.tab {
 	background-color: white;
 	text-align: center;

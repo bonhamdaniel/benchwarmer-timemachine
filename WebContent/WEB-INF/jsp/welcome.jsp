@@ -13,11 +13,11 @@
 <link href="${benchwarmerCSS}" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="${timemachineJS}"></script>
-<title>Benchwarmer Time Machine - Skater Stats</title>
+<title>Benchwarmer Time Machine</title>
 </head>
 <body>
-	<div id="welcome">
-		<h1>NHL Time Machine</h1>
+	<div class="welcome">
+		<h3>NHL Time Machine</h3>
 		<p>Adjust NHL player stats to see how they translate to other eras</p>
 	</div>
 </body>
