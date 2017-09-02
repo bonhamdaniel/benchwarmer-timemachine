@@ -70,8 +70,14 @@ div.welcome {
 	text-align: center;
 }
 
+#introduction h4 {
+	color: #ccccff;
+}
+
 #introduction {
+	margin: auto;
 	width: 67%;
+	color: white;
 }
 
 div.tab {
