@@ -16,7 +16,7 @@
 <title>Benchwarmer Time Machine</title>
 </head>
 <body>
-	<div id="introduction" class="welcome">
+	<div id="introduction" class="intro">
 		<h4>Ever wonder what Gretzky's stats would look like in today's NHL?</h4>
 		<h4>Or how many points Crosby could have put up in the high-flying 80's?</h4>
 		<p>Use the NHL Time Machine to find out!</p>

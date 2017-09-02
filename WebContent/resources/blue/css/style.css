@@ -68,13 +68,14 @@ div.menu button {
 
 div.welcome {
 	text-align: center;
-}
-
-#introduction h4 {
 	color: #ccccff;
 }
 
-#introduction {
+div.intro h4 {
+	color: #ccccff;
+}
+
+div.intro {
 	margin: auto;
 	width: 67%;
 	color: white;
