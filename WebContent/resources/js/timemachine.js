@@ -30,7 +30,8 @@ function checkComparison() {
 	var player2 = $('[name="player2"] option:selected').val()
 	alert(player1 + " " + player2);
 	$.get("validatecomparator.html", { player1:player1, player2:player2 }, function(data) {
-		if(data) return true;
+		alert("Returned from Java " + data)
+		if(data == "true") return true;
 		else alert("Cannot compare a goalie with a skater");
 	});
 	return false;

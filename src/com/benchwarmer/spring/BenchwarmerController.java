@@ -154,15 +154,17 @@ public class BenchwarmerController {
 		return "goalietable"; // directs to goalie table view
 	} // goalietable()
 	
-	@RequestMapping(value = "/validatecomparator", method = RequestMethod.GET)
-	public @ResponseBody boolean validatecomparator(@RequestParam("player1") String player1, @RequestParam("player2") String player2, @ModelAttribute("searchableplayers") Map<Integer, Player> searchableplayers) {
+	@RequestMapping(value = "/validatecomparator", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody String validatecomparator(@RequestParam("player1") String player1, @RequestParam("player2") String player2, @ModelAttribute("searchableplayers") Map<Integer, Player> searchableplayers) {
+		String result;
 		Player p1 = searchableplayers.get(Integer.parseInt(player1)); // retrieves user-specified player to be used for comparison
 		Player p2 = searchableplayers.get(Integer.parseInt(player2)); // retrieves user-specified player to be used for comparison
-		System.out.println(p1.getPlayerName());
+		System.out.println("In Java methopd:" + p1.getPlayerName());
 		if ((p1.getPosition().equals("G") && !p2.getPosition().equals("G")) || (p2.getPosition().equals("G") && !p1.getPosition().equals("G"))) { // handles incomparable data
-			return false;
+			 result = "false";
 		} // if (incomparable data)
-		return true;
+		result = "true";
+		return result;
 	} // validatecomparator()
 	
 	@RequestMapping(value = "/comptable", method = RequestMethod.GET) // handles view for the presentation of player comparison data
