@@ -163,7 +163,7 @@ public class BenchwarmerController {
 				players = transformStats(p1Seasons, p2Seasons, baseSeason); // transforms both skater's data
 			} // else
 			sortSkaters(players, params.get("sort")); // sorts skater data based on user-specified column
-			model.addAttribute("baseS", "All seasons"); // used in table title
+			model.addAttribute("baseS", "All"); // used in table title
 			model.addAttribute("targetS", baseSeason); // sets user-specified base season to model (uses targetS variable bc comparison data is calculated differently)
 			model.addAttribute("p1", p1); // adds user-specified first comparable skater to model
 			model.addAttribute("p2", p2); // adds user-specified second comparable skater to model
@@ -183,7 +183,7 @@ public class BenchwarmerController {
 				goalies = transformGoalies(p1Seasons, p2Seasons, baseSeason); // transforms both goalie's data
 			} // else
 			sortGoalies(goalies, params.get("sort")); // sorts goalie data based on user-specified column
-			model.addAttribute("baseS", "All seasons"); // used in table title
+			model.addAttribute("baseS", "All"); // used in table title
 			model.addAttribute("targetS", baseSeason); // sets user-specified base season to model (uses targetS variable bc comparison data is calculated differently)
 			model.addAttribute("p1", p1); // adds user-specified first comparable goalie to model
 			model.addAttribute("p2", p2); // adds user-specified second comparable goalie to model
