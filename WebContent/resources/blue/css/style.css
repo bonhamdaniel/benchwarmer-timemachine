@@ -30,7 +30,7 @@ header div {
 }
 
 #iframe {
-	overflow: hidden;
+	vertical-overflow: hidden;
 }
 
 #footer { 
