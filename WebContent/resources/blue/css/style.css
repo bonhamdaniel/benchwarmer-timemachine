@@ -80,12 +80,11 @@ div.intro {
 	margin: auto;
 	width: 50%;
 	color: black;
-	text-align: left;
+	text-align: center;
 }
 
 div.list {
 	margin: auto;
-	width: 67%;
 	text-align: left;
 }
 
