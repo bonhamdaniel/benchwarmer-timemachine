@@ -17,9 +17,9 @@
 </head>
 <body>
 	<div id="introduction" class="intro">
-		<h4>What would Gretzky's stats look like in today's NHL?</h4>
-		<h4>How many points could Crosby have put up in the high-flying 80's?</h4>
-		<h4>Where does Price rank among the great goalies of the recent past?</h4>
+		<h4>What would Gretzky's stats look like in today's NHL?
+		How many points could Crosby have put up in the high-flying 80's?
+		Where does Price rank among the great goalies of the recent past?</h4>
 		<h4>Use the NHL Time Machine to find out!</h4>
 		<p><b>Option #1</b> - click 'skaters' or 'goalies' to adjust any individual season since
 		   1987/88 to the production rates of any other season in that timeframe.  Alternatively, choose "All" to translate every
@@ -42,7 +42,7 @@
 				<li>Click 'Convert'
 			</ol>
 		</div>
-		<p>All columns can be sorted by clicking on their respective headers</p>
+		<p>All table columns can be sorted by clicking on their respective headers.</p>
 	</div>
 </body>
 </html>

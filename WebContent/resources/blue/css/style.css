@@ -68,18 +68,18 @@ div.menu button {
 
 div.welcome {
 	text-align: center;
-	color: #00004d;
+	color: black;
 }
 
 div.intro h4 {
-	color: #00004d;
+	color: black;
 	text-align: center;
 }
 
 div.intro {
 	margin: auto;
-	width: 67%;
-	color: #00004d;
+	width: 50%;
+	color: black;
 	text-align: left;
 }
 
