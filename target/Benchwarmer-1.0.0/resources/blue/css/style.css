@@ -136,6 +136,11 @@ div.tab button.active {
 	font-weight: bold;
 }
 
+#statOptions select {
+	background-color: #f2f2f2;
+	color: #00004d;
+}
+
 div.stattable {
 	margin: auto;
 	min-height: 500px;
