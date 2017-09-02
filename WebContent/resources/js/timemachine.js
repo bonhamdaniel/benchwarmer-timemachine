@@ -26,7 +26,10 @@ function loadTimeMachine() {
 }
 
 function checkComparison() {
-	$.get("validatecomparator.html", { player1:$('#p1ayer1').val(), player2:$('#p1ayer2').val() }, function(data) {
+	var player1 = $('[name="player1"] option:selected').text()
+	var player2 = $('[name="player2"] option:selected').text()
+	alert(player1 + " " + player2);
+	$.get("validatecomparator.html", { player1:player1, player2:player2 }, function(data) {
 		if(data) return true;
 		else alert("Cannot compare a goalie with a skater");
 	});
