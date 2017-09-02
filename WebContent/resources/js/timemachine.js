@@ -25,18 +25,7 @@ function loadTimeMachine() {
 	$("#tableFrame").attr("src", "intro.html");
 }
 
-function checkComparison() {
-	var player1 = $('[name="player1"] option:selected').val()
-	var player2 = $('[name="player2"] option:selected').val()
-	var result = "false"
-	alert(player1 + " " + player2);
-	$.get("validatecomparator.html", { player1:player1, player2:player2 }, function(data) {
-		alert("Returned from Java " + data)
-		if(data == "true") result = true;
-		else alert("Cannot compare a goalie with a skater");
-	});
-	return result;
-}
+
 
 $('#tableFrame').ready(function() {
 	var recordPerPage = 25;
@@ -76,6 +65,19 @@ $('#statsview').ready(function() {
 	$(document).on('change', '.season', (function(event) {
 		if(($('[name="baseSeason"] option:selected').text() != $('[name="targetSeason"] option:selected').text()) && ($('#season1 option:selected').text() != "All")) $("#include").prop("disabled", false);
 		else $("#include").prop("disabled", true);
+	}));
+	
+	$(document).on('change', '.player', (function() {
+		var player1 = $('[name="player1"] option:selected').val()
+		var player2 = $('[name="player2"] option:selected').val()
+		var result = "false"
+		alert(player1 + " " + player2);
+		$.get("validatecomparator.html", { player1:player1, player2:player2 }, function(data) {
+			alert("Returned from Java " + data)
+			if(data == "true") result = true;
+			else alert("Cannot compare a goalie with a skater");
+		});
+		return result;
 	}));
 });
 

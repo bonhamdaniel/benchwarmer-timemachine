@@ -159,7 +159,6 @@ public class BenchwarmerController {
 		String result;
 		Player p1 = searchableplayers.get(Integer.parseInt(player1)); // retrieves user-specified player to be used for comparison
 		Player p2 = searchableplayers.get(Integer.parseInt(player2)); // retrieves user-specified player to be used for comparison
-		System.out.println("In Java methopd:" + p1.getPlayerName());
 		if ((p1.getPosition().equals("G") && !p2.getPosition().equals("G")) || (p2.getPosition().equals("G") && !p1.getPosition().equals("G"))) { // handles incomparable data
 			 result = "false";
 		} // if (incomparable data)
