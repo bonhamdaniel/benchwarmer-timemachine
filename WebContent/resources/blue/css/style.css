@@ -81,6 +81,7 @@ div.intro {
 	width: 50%;
 	color: black;
 	text-align: center;
+	align-content: center;
 }
 
 div.list {

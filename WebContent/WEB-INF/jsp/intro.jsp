@@ -33,7 +33,7 @@
 				<li>Click 'Convert'
 			</ol>
 		</div>
-		<p><b>Option #2</b> - click 'player comparator' to compare player's historical performances head-to-head.  
+		<p><b>Option #2</b> - click 'player comparator' to compare player's era-adjusted historical performances head-to-head.  
 		<div class="list">
 			<ol>
 				<li>Select the season to use as a baseline (production rates)
@@ -42,7 +42,7 @@
 				<li>Click 'Convert'
 			</ol>
 		</div>
-		<p>All table columns can be sorted by clicking on their respective headers.</p>
+		<p>*All table columns can be sorted by clicking on their respective headers.</p>
 	</div>
 </body>
 </html>
