@@ -42,7 +42,7 @@
 	<iframe id="statsview"
 			name="statsview"
 			width="100%"
-			height="75px"
+			height="90px"
 			src="welcome.html">
 	</iframe>
 	<iframe id="tableFrame"

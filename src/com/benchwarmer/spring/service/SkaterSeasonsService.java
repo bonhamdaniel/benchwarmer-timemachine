@@ -25,8 +25,8 @@ public class SkaterSeasonsService {
 		return skaterSeasonsDAO.skaterList();
 	}
 	
-	public List<Skaterseasons> skaterList(int baseSeason, int minGP) {
-		return skaterSeasonsDAO.skaterList(baseSeason, minGP);
+	public List<Skaterseasons> skaterList(int baseSeason, int minGP, String positions) {
+		return skaterSeasonsDAO.skaterList(baseSeason, minGP, positions);
 	}
 	
 	public List<Skaterseasons> playerSeasons(int playerid) {

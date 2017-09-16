@@ -15,10 +15,10 @@
 <script src="${timemachineJS}"></script>
 <title>Benchwarmer Time Machine - Skater Stats</title>
 </head>
-<body>
+<body id="statsmenu">
 	<div id="statOptions">
 		<form action="skatertable.html?" target="tableFrame" method="GET">
-			<label>Adjust </label>
+			<label class="title">Adjust </label>
 			<select id="season1" class="season" name="baseSeason">
 				<c:forEach items="${seasons}" varStatus="season">
 					<c:set var="seasonid" value="${seasons[season.index].seasonid}" />
@@ -34,22 +34,34 @@
 					<option value="0" selected>--All--</option>
 				</c:if>
 			</select>
-			<label> skater stats to </label>
+			<label class="title"> skater stats to </label>
 			<select class="season" name="targetSeason">
 				<c:forEach items="${seasons}" varStatus="season">
 					<c:set var="seasonid" value="${seasons[season.index].seasonid}" />
 					<c:if test="${seasonid != targetS}">
 						<option value="${seasonid}">${seasonid}</option>
 					</c:if>
-					
 					<c:if test="${seasonid == targetS}">
 						<option value="${seasonid}" selected>${seasonid}</option>
 					</c:if>
 				</c:forEach>
 			</select>
-			<label>production rates</label>
+			<label class="title">production rates</label>
 			<br>
-			<label>Min GP: </label><input type="number" name="min" min="0" max="82" value="20" width="3">
+			<label>Position:</label>
+			<select id="positionFilter" class ="positionFilter" name="positionFilter">
+				<c:forEach items="${positions}" varStatus="position">
+					<c:set var="positionid" value="${positions[position.index]}" />
+					<c:if test="${positionid != selectedP}">
+						<option value="${positionid}">${positionid}</option>
+					</c:if>
+					<c:if test="${positionid == selectedP}">
+						<option value="${positionid}" selected>${positionid}</option>
+					</c:if>
+				</c:forEach>
+			</select>
+			<label>&emsp;Min GP: </label><input type="number" name="min" min="0" max="82" value="20" width="3">
+			<br>
 			<input id="include" type="checkbox" name="include" disabled />Include skaters from target season
 			<br>
 			<input type="hidden" name="sort" value="pts" />

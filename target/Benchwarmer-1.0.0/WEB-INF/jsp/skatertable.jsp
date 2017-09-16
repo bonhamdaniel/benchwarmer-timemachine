@@ -31,6 +31,7 @@
 	        <tr>
 	        	<th>Rank</th>
 	        	<th class="player" onclick="sortSkaters('player')">Player</th>
+	        	<th>Pos</th>
 	            <th>Season</th>
 	            <th onclick="formatTable('gp')">GP</th>
 	            <th onclick="formatTable('g')">G</th>
@@ -55,6 +56,7 @@
 	            <tr>
 	                <td><c:out value="${player.getRank()}" /></td>
 	                <td><c:out value="${player.getPlayername()}" /></td>
+	                <td><c:out value="${player.getPosition()}" /></td>
 	                <td><c:out value="${player.getSeasonid()}" /></td>
 	                <td><c:out value="${player.getGp()}" /></td>
 	                <td><c:out value="${player.getG()}" /></td>

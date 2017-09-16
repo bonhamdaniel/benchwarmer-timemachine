@@ -32,7 +32,7 @@ import com.benchwarmer.spring.service.SkaterSeasonsService;
 import com.benchwarmer.spring.model.Skaterseasons;
 
 @Controller
-@SessionAttributes({"playerbios", "searchableplayers", "seasons", "skater", "baseS", "targetS", "min", "sort", "pageNum", "players", "goalies"})
+@SessionAttributes({"playerbios", "searchableplayers", "seasons", "skater", "baseS", "targetS", "min", "positions", "selectedP", "sort", "pageNum", "players", "goalies"})
 public class BenchwarmerController {
 	@Autowired private SeasonService seasonService;
 	@Autowired private SkaterSeasonsService skaterService;
@@ -41,12 +41,24 @@ public class BenchwarmerController {
 	
 	@ModelAttribute("playerbios") public List<Player> playerbios() { return playerService.playerList(); } // used to populate player select inputs
 	@ModelAttribute("seasons") public List<Season> seasons() { return seasonService.seasonList(); } // used to populate season select inputs
+	@ModelAttribute("positions") public List<String> positions() {
+		List<String> positions = new ArrayList<String>();
+		positions.add("C");
+		positions.add("LW");
+		positions.add("RW");
+		positions.add("W");
+		positions.add("F");
+		positions.add("D");
+		positions.add("All");
+		return positions;
+	} // used to populate season select inputs
 	@ModelAttribute("baseS") public int baseS() { return 20162017; } // holds base season for stat transformation - the season to transform
 	@ModelAttribute("targetS") public int targetS() { return 20162017; } // holds target season for stat transformation - the production levels to transform to
 	@ModelAttribute("min") public int min() { return 20; } // used to filter results by a minimum number of player games played
+	@ModelAttribute("selectedP") public String selectedP() { return "All Skaters"; } // used to filter results by a minimum number of player games played
 	@ModelAttribute("sort") public String sort() { return "pts"; } // used to hold the column currently used to sort the data
 	@ModelAttribute("pageNum") public int pageNum() { return 1; } // used to hold the current table data page - pagination
-	@ModelAttribute("players") public List<ConvertedSkater> players() { return transformStats(skaterService.skaterList(20162017, 20), 20162017, 20162017); } // holds the skater transformation result sets
+	@ModelAttribute("players") public List<ConvertedSkater> players() { return transformStats(skaterService.skaterList(20162017, 20, "All"), 20162017, 20162017); } // holds the skater transformation result sets
 	@ModelAttribute("goalies") public List<ConvertedGoalie> goalies() { return transformGoalies(goalieService.goalieList(20162017, 20), 20162017, 20162017); } // holds the goalie transformation result sets
 	@ModelAttribute("searchableplayers") // ensures player bio data is only accessed once and can then be searched by playerid
 	public Map<Integer, Player> searchableplayers(@ModelAttribute("playerbios") List<Player> playerbios) {  // retrieves all player bios from db
@@ -71,12 +83,13 @@ public class BenchwarmerController {
 	} // timemachine()
 	
 	@RequestMapping(value = "/skaters") // handles view for skater transformation menu with default values
-	public String skaters(Model model) {
+	public String skaters(Model model, @ModelAttribute("positions") List<String> positions, @ModelAttribute("selectedP") String selectedP) {
 		model.addAttribute("baseS", "20162017");
 		model.addAttribute("targetS", "20162017");
 		model.addAttribute("sort", "pts");
 		model.addAttribute("pageNum", 1);
 		model.addAttribute("min", 20);
+		model.addAttribute("selectedP", "F");
 		return "skaters";
 	} // skaters()
 	
@@ -104,18 +117,19 @@ public class BenchwarmerController {
 	public String skatertable(@RequestParam Map<String, String> params, Model model, @ModelAttribute("players") List<ConvertedSkater> players, @ModelAttribute("seasons") List<Season> seasons) {
 		int targetSeason = Integer.parseInt(params.get("targetSeason")); // retrieves target season for transformation from get request
 		int min = Integer.parseInt(params.get("min")); // retrieves minimum games played for filtering the transformation from get request
+		String selectedPosition = params.get("positionFilter");
 		int baseSeason; // will hold user-specified base season
 		if (params.get("baseSeason").equals("0")) { // retrieves base season for transformation from get request
 			baseSeason = 0; // value used when the user wishes to transform skater data from all available seasons
 			players = new ArrayList<ConvertedSkater>(); // prepares for new result set
 			for (Season s : seasons) // gets skater data for each season
-				players.addAll(transformStats(skaterService.skaterList(s.getSeasonid(), min), s.getSeasonid(), targetSeason)); // transforms skater data
+				players.addAll(transformStats(skaterService.skaterList(s.getSeasonid(), min, selectedPosition), s.getSeasonid(), targetSeason)); // transforms skater data
 		} // if (season==0)
 		else { // handles individual season transformation requests
 			baseSeason = Integer.parseInt(params.get("baseSeason")); // retrieves requested base season from get
-			players = transformStats(skaterService.skaterList(baseSeason, min), baseSeason, targetSeason); // transforms base season skater data
+			players = transformStats(skaterService.skaterList(baseSeason, min, selectedPosition), baseSeason, targetSeason); // transforms base season skater data
 			if (params.containsKey("include")) { // determines whether the user has requested to include skater data from target season for comparison
-				players.addAll(transformStats(skaterService.skaterList(targetSeason, min), targetSeason, targetSeason)); // transforms target season skater data
+				players.addAll(transformStats(skaterService.skaterList(targetSeason, min, selectedPosition), targetSeason, targetSeason)); // transforms target season skater data
 			} // if (include)
 		} // else
 		sortSkaters(players, params.get("sort")); // retrieves user-specified sort column and sorts skater data
@@ -124,6 +138,7 @@ public class BenchwarmerController {
 		model.addAttribute("baseS", baseSeason); // sets user-specified base season to model
 		model.addAttribute("targetS", targetSeason); // sets user-specified target season to model
 		model.addAttribute("min", min); // sets user-specified minimum games played for filtering to model
+		model.addAttribute("selectedP", selectedPosition);
 		return "skatertable"; // directs to skater table view
 	}// skatertable()
 	
@@ -280,7 +295,7 @@ public class BenchwarmerController {
 			float gpg = g / p.getGp(); // calculates skater's transformed goals per game
 			float apg = a / p.getGp(); // calculates skater's transformed assists per game
 			float pperg = pts / p.getGp(); // calculates skater's transformed points per game
-			skaters.add(new ConvertedSkater(p.getPlayername(), p.getSeasonid(), p.getGp(), evg, eva, ppg, ppa, shg, sha, pim, s, g, a, pts, evp, ppp, shp, gpg, apg, pperg)); // adds transformed skater season to result set
+			skaters.add(new ConvertedSkater(p.getPlayername(), p.getPosition(), p.getSeasonid(), p.getGp(), evg, eva, ppg, ppa, shg, sha, pim, s, g, a, pts, evp, ppp, shp, gpg, apg, pperg)); // adds transformed skater season to result set
 		} // for (skater season)
 		return skaters; // returns transformed skater data
 	} // transformStats(individual season)
@@ -339,7 +354,7 @@ public class BenchwarmerController {
 	// transforms, sums and returns a skater's career stats
 	public ConvertedSkater convertSkater(List<Skaterseasons> skater, int baseS) {
 		ConvertedSkater s = new ConvertedSkater(); // will hold transformed skater stats
-		s.setName(skater.get(0).getPlayername()); // sets the skater name
+		s.setNameAndPosition(skater.get(0).getPlayername(), skater.get(0).getPosition()); // sets the skater name
 		int minY = skater.get(0).getSeasonid(); // used to set skater's career span
 		int maxY = skater.get(0).getSeasonid(); // used to set skater's career span
 		for (Skaterseasons p : skater) { // loops through all a skater's active seasons

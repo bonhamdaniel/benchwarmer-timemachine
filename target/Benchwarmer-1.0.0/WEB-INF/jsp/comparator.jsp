@@ -18,8 +18,8 @@
 <body>
 <div id="statOptions">
 	<form action="comptable.html" target="tableFrame" method="get">
-		<label>Compare players using </label>
-		<select name="baseSeason">
+		<label class="title">Compare players using </label>
+		<select name="baseSeason" class="season">
 			<c:forEach items="${seasons}" varStatus="season">
 				<c:set var="seasonid" value="${seasons[season.index].seasonid}" />
 				<c:if test="${seasonid != baseS}">
@@ -30,7 +30,7 @@
 				</c:if>
 			</c:forEach>
 		</select>
-		<label> production rates</label>
+		<label class="title"> production rates</label>
 		<br>
 		<label>Player #1</label>
 		<select id="player1" class="player" name="player1">
@@ -44,7 +44,7 @@
 				</c:if>
 			</c:forEach>
 		</select>
-		<label>Player #2</label>
+		<label>&emsp;Player #2</label>
 		<select id="player2" class="player" name="player2">
 			<option value="${p2.playerid}" selected>${p2.playerName}</option>
 			<c:forEach items="${playerbios}" varStatus="player">
@@ -58,8 +58,9 @@
 			</c:forEach>
 		</select>
 		<br>
-		<input id="compare" type="submit" value="Compare"/>
 		<input id="include" type="checkbox" name="include">Display Individual Seasons
+		<br>
+		<input id="compare" type="submit" value="Compare"/>
 		<input type="hidden" name="sort" value="pts" />
 	</form>
 </div>

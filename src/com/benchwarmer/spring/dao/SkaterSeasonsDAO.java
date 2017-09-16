@@ -23,9 +23,26 @@ public class SkaterSeasonsDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Skaterseasons> skaterList(int baseSeason, int minGP) {
+	public List<Skaterseasons> skaterList(int baseSeason, int minGP, String positions) {
 		Session session = sessionFactory.openSession();
-		List<Skaterseasons> skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP).getResultList();
+		List<Skaterseasons> skaters;
+		switch(positions) {
+			case("All") : skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP).getResultList();
+								  break;
+			case("C"):			  skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP + " and position = 'C'").getResultList();
+			  					  break;
+			case("LW"):			  skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP + " and position = 'L'").getResultList();
+			  					  break;
+			case("RW"):			  skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP + " and position = 'R'").getResultList();
+			  				      break;
+			case("W"):			  skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP + " and (position = 'L' or position = 'R')").getResultList();
+			  					  break;
+			case("F"):			  skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP + " and position != 'D'").getResultList();
+			  					  break;
+			case("D"):			  skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP + " and position = 'D'").getResultList();
+			  					  break;
+			default: 			  skaters = session.createQuery("from Skaterseasons where seasonid = " + baseSeason + " and gp >= " + minGP).getResultList();
+		}
 		session.close();
 		return skaters;
 	}

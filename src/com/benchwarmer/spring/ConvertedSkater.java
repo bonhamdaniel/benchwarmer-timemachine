@@ -15,6 +15,7 @@ import org.decimal4j.util.DoubleRounder;
 public class ConvertedSkater implements Comparable<ConvertedSkater> {
 	int rank = 0; // stores a skater's rank given the current sort criteria
 	String playername; // stores a skater's name
+	String position; // stores a skater's position
 	long seasonid; // stores a season id for a skater's transformed stats
 	int gp; // stores games played for a skater's transformed stats
 	int evg; // stores even strength goals for a skater's transformed stats
@@ -39,8 +40,9 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 	public ConvertedSkater() {}
 	
 	// construct used when passed a skater's transformed stats for a season - sets initial values based on era adjustments
-	public ConvertedSkater(String playername, long seasonid, int gp, int evg, int eva, int ppg, int ppa, int shg, int sha, int pim, int s, int g, int a, int pts, int evp, int ppp, int shp, float gpg, float apg, float pperg) {
+	public ConvertedSkater(String playername, String position, long seasonid, int gp, int evg, int eva, int ppg, int ppa, int shg, int sha, int pim, int s, int g, int a, int pts, int evp, int ppp, int shp, float gpg, float apg, float pperg) {
 		this.playername = playername;
+		this.position = position;
 		this.seasonid = seasonid;
 		this.gp = gp;
 		this.evg = evg;
@@ -89,8 +91,9 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 	} // setRank()
 
 	// setter method for playername variable
-	public void setName(String name) {
+	public void setNameAndPosition(String name, String position) {
 		this.playername = name;
+		this.position = position;
 	} // setName()
 
 	// calculates and returns a player's career span
@@ -106,6 +109,11 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 	// getter method for playername variable
 	public String getPlayername() {
 		return this.playername;
+	} // getPlayername()
+
+	// getter method for playername variable
+	public String getPosition() {
+		return this.position;
 	} // getPlayername()
 
 	// getter method for seasonid variable

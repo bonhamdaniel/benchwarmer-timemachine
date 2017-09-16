@@ -13,7 +13,7 @@ function loadGoalieTable() {
 }
 
 function loadSkaterTable() {
-	$("#tableFrame").attr("src", "skatertable.html?baseSeason=20162017&targetSeason=20162017&sort=pts&min=20");
+	$("#tableFrame").attr("src", "skatertable.html?baseSeason=20162017&targetSeason=20162017&sort=pts&min=20&positionFilter=F");
 }
 
 function loadCompTable() {
