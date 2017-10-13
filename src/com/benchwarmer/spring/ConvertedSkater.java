@@ -35,12 +35,15 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 	float gpg; // stores goals per game for a skater's transformed stats
 	float apg; // stores assists per game for a skater's transformed stats
 	float pperg; // stores points per game for a skater's transformed stats
+	int gDiff; // stores the difference in goals resulting from transforming
+	int aDiff; // stores the difference in assists resulting from transforming
+	int pDiff; // stores the difference in points resulting from transforming
 	
 	// default constructor
 	public ConvertedSkater() {}
 	
 	// construct used when passed a skater's transformed stats for a season - sets initial values based on era adjustments
-	public ConvertedSkater(String playername, String position, long seasonid, int gp, int evg, int eva, int ppg, int ppa, int shg, int sha, int pim, int s, int g, int a, int pts, int evp, int ppp, int shp, float gpg, float apg, float pperg) {
+	public ConvertedSkater(String playername, String position, long seasonid, int gp, int evg, int eva, int ppg, int ppa, int shg, int sha, int pim, int s, int g, int a, int pts, int evp, int ppp, int shp, float gpg, float apg, float pperg, int gDiff, int aDiff, int pDiff) {
 		this.playername = playername;
 		this.position = position;
 		this.seasonid = seasonid;
@@ -62,6 +65,9 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 		this.gpg = gpg;
 		this.apg = apg;
 		this.pperg = pperg;
+		this.gDiff = gDiff;
+		this.aDiff = aDiff;
+		this.pDiff = pDiff;
 	} // CovertedSkater()
 	
 	// sums two instances of ConvertedSkater - used to compile career data for a skater
@@ -82,6 +88,9 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 			this.evp += con.evp;
 			this.ppp += con.ppp;
 			this.shp += con.shp;
+			this.gDiff += con.gDiff;
+			this.aDiff += con.aDiff;
+			this.pDiff += con.pDiff;
 		} // for (season)
 	} // addAll()
 	
@@ -210,6 +219,21 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 	public int getShp() {
 		return this.shp;
 	} // getShp()
+
+	// getter method for gDiff variable
+	public int getGDiff() {
+		return this.gDiff;
+	} // getGDiff()
+
+	// getter method for aDiff variable
+	public int getADiff() {
+		return this.aDiff;
+	} // getADiff()
+
+	// getter method for pDiff variable
+	public int getPDiff() {
+		return this.pDiff;
+	} // getPDiff()
 
 	// compares ConvertedSkater instances, returning value indicating descending order of points
 	public int compareTo(ConvertedSkater convertedSkater) {
@@ -368,6 +392,27 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 		}
 	}; // Comparator (shp)
 	
+	// implements sort for ConvertedSkater collections based on goal difference resulting from transformation
+	public static Comparator<ConvertedSkater> GDiffComparator = new Comparator<ConvertedSkater>() {
+		public int compare(ConvertedSkater convertedSkater1, ConvertedSkater convertedSkater2) {
+			return convertedSkater2.gDiff - convertedSkater1.gDiff;
+		}
+	}; // Comparator (gDiff)
+	
+	// implements sort for ConvertedSkater collections based on assist difference resulting from transformation
+	public static Comparator<ConvertedSkater> ADiffComparator = new Comparator<ConvertedSkater>() {
+		public int compare(ConvertedSkater convertedSkater1, ConvertedSkater convertedSkater2) {
+			return convertedSkater2.aDiff - convertedSkater1.aDiff;
+		}
+	}; // Comparator (aDiff)
+	
+	// implements sort for ConvertedSkater collections based on point difference resulting from transformation
+	public static Comparator<ConvertedSkater> PDiffComparator = new Comparator<ConvertedSkater>() {
+		public int compare(ConvertedSkater convertedSkater1, ConvertedSkater convertedSkater2) {
+			return convertedSkater2.pDiff - convertedSkater1.pDiff;
+		}
+	}; // Comparator (pDiff)
+	
 	// returns the appropriate Comparator object based on the passed column value
 	public static Comparator<ConvertedSkater> getSort(String column) {
 		switch(column) { // determines and returns the appropriate Comparator object
@@ -390,6 +435,9 @@ public class ConvertedSkater implements Comparable<ConvertedSkater> {
 			case("shg"): return ConvertedSkater.ShgComparator;
 			case("sha"): return ConvertedSkater.ShaComparator;
 			case("shp"): return ConvertedSkater.ShpComparator;
+			case("gdiff"): return ConvertedSkater.GDiffComparator;
+			case("adiff"): return ConvertedSkater.ADiffComparator;
+			case("pdiff"): return ConvertedSkater.PDiffComparator;
 			default: return ConvertedSkater.PtsComparator;
 		} // switch (column)
 	} // getSort()

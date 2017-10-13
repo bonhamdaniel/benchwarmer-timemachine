@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -15,13 +15,15 @@
 <title>Insert title here</title>
 </head>
 <body id="iframe">
+<br>
+<br>
 <div id="stattable">
 	<form id = "table" action="sortskater.html?" target="tableFrame" method="GET">
 		<input id="type" type="hidden" value="skater" />
 		<input id="pageNum" type="hidden" name="pageNum" value="${pageNum}" />
 		<input id="count" type="hidden" value="${players.size()}" />
 		<input id="sort" type="hidden" name="sort" value="${sort}" />
-		<table border="1" cellpadding="5">
+		<table border="1">
 			<c:if test="${baseS == targetS}">
 				<caption>Raw ${baseS} Stats</caption>
 			</c:if>
@@ -33,53 +35,60 @@
 	        	<th class="player" onclick="sortSkaters('player')">Player</th>
 	        	<th>Pos</th>
 	            <th>Season</th>
-	            <th onclick="formatTable('gp')">GP</th>
-	            <th onclick="formatTable('g')">G</th>
-	            <th onclick="formatTable('a')">A</th>
-	            <th onclick="formatTable('pts')">P</th>
-	            <th onclick="formatTable('pim')">PIM</th>
-	            <th onclick="formatTable('s')">S</th>
-	            <th onclick="formatTable('ggp')">G/GP</th>
-	            <th onclick="formatTable('agp')">A/GP</th>
-	            <th onclick="formatTable('pgp')">P/GP</th>
-	            <th onclick="formatTable('evg')">EVG</th>
-	            <th onclick="formatTable('eva')">EVA</th>
-	            <th onclick="formatTable('evp')">EVP</th>
-	            <th onclick="formatTable('ppg')">PPG</th>
-	            <th onclick="formatTable('ppa')">PPA</th>
-	            <th onclick="formatTable('ppp')">PPP</th>
-	            <th onclick="formatTable('shg')">SHG</th>
-	            <th onclick="formatTable('sha')">SHA</th>
-	            <th onclick="formatTable('shp')">SHP</th>
+	            <th class="tooltip" onclick="formatTable('gp')">GP<span class="tooltiptext">Games Played</span></th>
+	            <th class="tooltip" onclick="formatTable('g')">G<span class="tooltiptext">Goals</span></th>
+	            <th class="tooltip" onclick="formatTable('a')">A<span class="tooltiptext">Assists</span></th>
+	            <th class="tooltip" onclick="formatTable('pts')">P<span class="tooltiptext">Points</span></th>
+	            <th class="tooltip" onclick="formatTable('pim')">PIM<span class="tooltiptext">Penalty Minutes</span></th>
+	            <th class="tooltip" onclick="formatTable('s')">S<span class="tooltiptext">Shots</span></th>
+	            <th class="tooltip" onclick="formatTable('ggp')">G/GP<span class="tooltiptext">Goals Per Game</span></th>
+	            <th class="tooltip" onclick="formatTable('agp')">A/GP<span class="tooltiptext">Assists Per Game</span></th>
+	            <th class="tooltip" onclick="formatTable('pgp')">P/GP<span class="tooltiptext">Points Per Game</span></th>
+	            <th class="tooltip" onclick="formatTable('evg')">EVG<span class="tooltiptext">Even Strength Goals</span></th>
+	            <th class="tooltip" onclick="formatTable('eva')">EVA<span class="tooltiptext">Even Strength Assists</span></th>
+	            <th class="tooltip" onclick="formatTable('evp')">EVP<span class="tooltiptext">Even Strength Points</span></th>
+	            <th class="tooltip" onclick="formatTable('ppg')">PPG<span class="tooltiptext">Power-Play Goals</span></th>
+	            <th class="tooltip" onclick="formatTable('ppa')">PPA<span class="tooltiptext">Power-Play Assists</span></th>
+	            <th class="tooltip" onclick="formatTable('ppp')">PPP<span class="tooltiptext">Power-Play Points</span></th>
+	            <th class="tooltip" onclick="formatTable('shg')">SHG<span class="tooltiptext">Short-Handed Goals</span></th>
+	            <th class="tooltip" onclick="formatTable('sha')">SHA<span class="tooltiptext">Short-Handed Assists</span></th>
+	            <th class="tooltip" onclick="formatTable('shp')">SHP<span class="tooltiptext">Short-Handed Points</span></th>
+	            <th class="tooltip" onclick="formatTable('gdiff')">G(+/-)<span class="tooltiptext">Goal Change Via Era Adjustment</span></th>
+	            <th class="tooltip" onclick="formatTable('adiff')">A(+/-)<span class="tooltiptext">Assist Change Via Era Adjustment</span></th>
+	            <th class="tooltip" onclick="formatTable('pdiff')">P(+/-)<span class="tooltiptext">Point Change Via Era Adjustment</span></th>
 	        </tr>
 	        <c:forEach var="player" items="${skaters}">
 	            <tr>
 	                <td><c:out value="${player.getRank()}" /></td>
 	                <td><c:out value="${player.getPlayername()}" /></td>
 	                <td><c:out value="${player.getPosition()}" /></td>
-	                <td><c:out value="${player.getSeasonid()}" /></td>
+	                <td class="leftBorder" ><c:out value="${player.getSeasonid()}" /></td>
 	                <td><c:out value="${player.getGp()}" /></td>
 	                <td><c:out value="${player.getG()}" /></td>
 	                <td><c:out value="${player.getA()}" /></td>
 	                <td><c:out value="${player.getP()}" /></td>
 	                <td><c:out value="${player.getPim()}" /></td>
 	                <td><c:out value="${player.getS()}" /></td>  
-	                <td><fmt:formatNumber type = "number" minFractionDigits = "3" value = "${player.getGGP()}" /></td>
+	                <td class="leftBorder" ><fmt:formatNumber type = "number" minFractionDigits = "3" value = "${player.getGGP()}" /></td>
 	                <td><fmt:formatNumber type = "number" minFractionDigits = "3" value = "${player.getAGP()}" /></td>
 	                <td><fmt:formatNumber type = "number" minFractionDigits = "3" value = "${player.getPGP()}" /></td>
-	                <td><c:out value="${player.getEvg()}" /></td>
+	                <td class="leftBorder" ><c:out value="${player.getEvg()}" /></td>
 	                <td><c:out value="${player.getEva()}" /></td>
 	                <td><c:out value="${player.getEvp()}" /></td>
-	                <td><c:out value="${player.getPpg()}" /></td>
+	                <td class="leftDashedBorder" ><c:out value="${player.getPpg()}" /></td>
 	                <td><c:out value="${player.getPpa()}" /></td>
 	                <td><c:out value="${player.getPpp()}" /></td>
-	                <td><c:out value="${player.getShg()}" /></td>
+	                <td class="leftDashedBorder" ><c:out value="${player.getShg()}" /></td>
 	                <td><c:out value="${player.getSha()}" /></td>
 	                <td><c:out value="${player.getShp()}" /></td>
+	                <td class="leftBorder" ><c:out value="${player.getGDiff()}" /></td>
+	                <td><c:out value="${player.getADiff()}" /></td>
+	                <td><c:out value="${player.getPDiff()}" /></td>
 	            </tr>
 	        </c:forEach>
 	    </table>
 	</form>
+	<br>
 </div>
 </body>
 </html>

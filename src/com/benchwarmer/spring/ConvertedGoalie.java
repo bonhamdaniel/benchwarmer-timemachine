@@ -25,12 +25,14 @@ public class ConvertedGoalie {
 	float gaa; // stores the gaa for a goalie's transformed stats
 	float svpct; // stores the svpct for a goalie's transformed stats
 	float sa60; // stores the sa60 for a goalie's transformed stats
+	int rawSA; // stores the goalies raw SA
+	int rawSV; // stores the goalies raw SV
 	
 	// default constructor
 	public ConvertedGoalie() {}
 	
 	// constructor used when passed a transformed goalieseasons record - initializes all summarized data
-	public ConvertedGoalie(String playername, int seasonid, int gp, float toi, int w, int l, int sa, int sv) {
+	public ConvertedGoalie(String playername, int seasonid, int gp, float toi, int w, int l, int sa, int sv, int rawSA, int rawSV) {
 		this.playername = playername;
 		this.seasonid = seasonid;
 		this.gp = gp;
@@ -39,6 +41,8 @@ public class ConvertedGoalie {
 		this.l = l;
 		this.sa = sa;
 		this.sv = sv;
+		this.rawSA = rawSA;
+		this.rawSV = rawSV;
 	} // constructor ConvertedGoalie()
 	
 	// adds instances of ConvertedGoalie - used to compile career stats
@@ -50,6 +54,8 @@ public class ConvertedGoalie {
 			this.l += con.l;
 			this.sa += con.sa;
 			this.sv += con.sv;
+			this.rawSA += con.rawSA;
+			this.rawSV += con.rawSV;
 		} // for (ConvertedGoalie)
 	} // addAll()
 	
@@ -127,6 +133,21 @@ public class ConvertedGoalie {
 	public float getSa60() {
 		return (float)DoubleRounder.round(1.0f*sa / toi * 60.0f, 1);
 	} // getSa60()
+	
+	// getter method for gaa difference resulting from transformation
+	public float getGAADiff() {
+		return getGaa() - (float)DoubleRounder.round((1.0f*rawSA-1.0f*rawSV) / (toi*1.0f) * 60.0f, 2);
+	} // getGAADiff()
+	
+	// getter method for svpct difference resulting from transformation
+	public float getSVPCTDiff() {
+		return getSvpct() - (float)DoubleRounder.round((1.0f*rawSV) / (1.0f*rawSA), 3);
+	} // getSVPCTDiff()
+	
+	// getter method for sa60 difference resulting from transformation
+	public float getSA60Diff() {
+		return getSa60() - (float)DoubleRounder.round(1.0f*rawSA / toi * 60.0f, 1);
+	} // getSA60Diff()
 	
 	// compares ConvertedGoalie instances, returning value indicating ascending order of goals against average
 	public int compareTo(ConvertedGoalie convertedGoalie) {
@@ -223,6 +244,27 @@ public class ConvertedGoalie {
 		}
 	}; // Comparator (sa60)
 	
+	// implements sort for ConvertedGoalie collections based on goals against average difference
+	public static Comparator<ConvertedGoalie> GAADiffComparator = new Comparator<ConvertedGoalie>() {
+		public int compare(ConvertedGoalie convertedGoalie1, ConvertedGoalie convertedGoalie2) {
+			return (int)(convertedGoalie1.getGAADiff()*1000) - (int)(convertedGoalie2.getGAADiff()*1000);
+		}
+	}; // Comparator (GAADiff)
+	
+	// implements sort for ConvertedGoalie collections based on save percentage difference
+	public static Comparator<ConvertedGoalie> SVPCTDiffComparator = new Comparator<ConvertedGoalie>() {
+		public int compare(ConvertedGoalie convertedGoalie1, ConvertedGoalie convertedGoalie2) {
+			return (int)(convertedGoalie2.getSVPCTDiff()*1000) - (int)(convertedGoalie1.getSVPCTDiff()*1000);
+		}
+	}; // Comparator (SVPCTDiff)
+	
+	// implements sort for ConvertedGoalie collections based on shots against per 60 difference
+	public static Comparator<ConvertedGoalie> SA60DiffComparator = new Comparator<ConvertedGoalie>() {
+		public int compare(ConvertedGoalie convertedGoalie1, ConvertedGoalie convertedGoalie2) {
+			return (int)(convertedGoalie2.getSA60Diff()*1000) - (int)(convertedGoalie1.getSA60Diff()*1000);
+		}
+	}; // Comparator (sA60Diff)
+	
 	// returns the appropriate Comparator object based on the passed column value
 	public static Comparator<ConvertedGoalie> getSort(String column) {
 		switch(column) { // determines and returns appropriate Comparator object
@@ -236,6 +278,9 @@ public class ConvertedGoalie {
 			case("gaa"): return ConvertedGoalie.GaaComparator;
 			case("svpct"): return ConvertedGoalie.SvpctComparator;
 			case("sa60"): return ConvertedGoalie.Sa60Comparator;
+			case("gaadiff"): return ConvertedGoalie.GAADiffComparator;
+			case("svpctdiff"): return ConvertedGoalie.SVPCTDiffComparator;
+			case("sa60diff"): return ConvertedGoalie.SA60DiffComparator;
 			default: return ConvertedGoalie.GaaComparator;
 		} // switch (column)
 	} // getSort()

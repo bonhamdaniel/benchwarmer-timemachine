@@ -19,5 +19,6 @@
 	<div class="welcome">
 		<h2>NHL Time Machine</h2>
 	</div>
+	<br>
 </body>
 </html>

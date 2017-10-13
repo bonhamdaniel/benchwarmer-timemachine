@@ -41,15 +41,15 @@
 	</div>
 	<iframe id="statsview"
 			name="statsview"
+			src="welcome.html"
 			width="100%"
-			height="90px"
-			src="welcome.html">
+			onload="resizeIframe(this)">
 	</iframe>
 	<iframe id="tableFrame"
-				name="tableFrame"
-				width="100%" 
-				height="750px"
-				src="intro.html">
+			name="tableFrame"
+			src="intro.html"
+			width="100%"
+			onload="resizeTableFrame(this)">
 	</iframe>
 	<div id="footer">
 		<address><a href="mailto:bonhamdaniel@gmail.com">e-mail benchwarmer</a></address>

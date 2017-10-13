@@ -9,15 +9,15 @@ function formatTable(column) {
 }
 
 function loadGoalieTable() {
-	$("#tableFrame").attr("src", "goalietable.html?baseSeason=20162017&targetSeason=20162017&sort=svpct&min=20");
+	$("#tableFrame").attr("src", "goalietable.html?baseSeason=20162017&targetSeason=19871988&sort=svpct&min=20");
 }
 
 function loadSkaterTable() {
-	$("#tableFrame").attr("src", "skatertable.html?baseSeason=20162017&targetSeason=20162017&sort=pts&min=20&positionFilter=F");
+	$("#tableFrame").attr("src", "skatertable.html?baseSeason=20162017&targetSeason=19871988&sort=pts&min=20&positionFilter=F");
 }
 
 function loadCompTable() {
-	$("#tableFrame").attr("src", "comptable.html?baseSeason=20162017&player1=8478550&player2=8476453&sort=pts");
+	$("#tableFrame").attr("src", "comptable.html?baseSeason=20162017&player1=8478550&player2=8476453&sort=pts&statsFormat=individual");
 }
 
 function loadTimeMachine() {
@@ -25,7 +25,13 @@ function loadTimeMachine() {
 	$("#tableFrame").attr("src", "intro.html");
 }
 
+function resizeIframe(obj) {
+	obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+}
 
+function resizeTableFrame(obj) {
+	obj.style.height = obj.contentWindow.document.body.scrollHeight + 30 + 'px';
+}
 
 $('#tableFrame').ready(function() {
 	var recordPerPage = 25;
@@ -60,23 +66,32 @@ $('#tableFrame').ready(function() {
 		$("#table").submit();
 	});
 });
-
+	
 $('#statsview').ready(function() {
 	$(document).on('change', '.season', (function(event) {
 		if(($('[name="baseSeason"] option:selected').text() != $('[name="targetSeason"] option:selected').text()) && ($('#season1 option:selected').text() != "All")) $("#include").prop("disabled", false);
 		else $("#include").prop("disabled", true);
 	}));
 	
-	$(document).on('change', '.player', (function() {
-		var player1 = $('[name="player1"] option:selected').val()
-		var player2 = $('[name="player2"] option:selected').val()
-		var result = "false"
-		$.get("validatecomparator.html", { player1:player1, player2:player2 }, function(data) {
-			if(data == "true") $("#compare").prop("disabled", false);
-			else {
-				$("#compare").prop("disabled", true);
-			}
-		});
+	$(document).on('change', '[name="targetSeason"]', function() {
+		var newTarget = $('[name="targetSeason"]').val();
+		$('#skaterInclude').html("Include " + newTarget + " skater stats for comparison");
+		$('#goalieInclude').html("Include " + newTarget + " goalie stats for comparison");
+	});
+});
+
+$('#statsview').ready(function() {
+	$(document).on('change', '.comparatorPositionFilter', (function() {
+		var position = $('#comparatorPositionFilter').val();
+		$.get("getplayers.json", { comparatorPositionFilter:position }, function(json) {
+			$('#player1').empty();
+			$('#player2').empty();
+			$.each(json, function(idx, li) {
+				$('#player1').append('<option value=' + li["playerid"] + '>' + li["playerName"] + '</option>');
+				$('#player2').append('<option value=' + li["playerid"] + '>' + li["playerName"] + '</option>');
+			});
+			$('#player2 option[value=' + json[1]["playerid"] + ']').attr('selected', 'selected');
+		}, "json");
 	}));
 });
 

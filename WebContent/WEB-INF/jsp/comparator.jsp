@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="" />
@@ -15,10 +15,23 @@
 <script src="${timemachineJS}"></script>
 <title>Skater Comparator</title>
 </head>
-<body>
+<body id="comparator">
 <div id="statOptions">
+	<br>
 	<form action="comptable.html" target="tableFrame" method="get">
-		<label class="title">Compare players using </label>
+		<label class="title">Position:</label>
+		<select id="comparatorPositionFilter" class ="comparatorPositionFilter" name="comparatorPositionFilter">
+			<c:forEach items="${positions}" varStatus="position">
+				<c:set var="positionid" value="${positions[position.index]}" />
+				<c:if test="${positionid != selectedP}">
+					<option value="${positionid}">${positionid}</option>
+				</c:if>
+				<c:if test="${positionid == selectedP}">
+					<option value="${positionid}" selected>${positionid}</option>
+				</c:if>
+			</c:forEach>
+		</select>
+		<label class="title">&emsp;Compare players using </label>
 		<select name="baseSeason" class="season">
 			<c:forEach items="${seasons}" varStatus="season">
 				<c:set var="seasonid" value="${seasons[season.index].seasonid}" />
@@ -46,7 +59,6 @@
 		</select>
 		<label>&emsp;Player #2</label>
 		<select id="player2" class="player" name="player2">
-			<option value="${p2.playerid}" selected>${p2.playerName}</option>
 			<c:forEach items="${playerbios}" varStatus="player">
 				<c:set var="playerid" value="${playerbios[player.index].playerid}" />
 				<c:if test="${playerid != p2.playerid}">
@@ -58,11 +70,13 @@
 			</c:forEach>
 		</select>
 		<br>
-		<input id="include" type="checkbox" name="include">Display Individual Seasons
+		<input type="radio" name="statsFormat" value="career" checked> Career Stats
+		<input type="radio" name="statsFormat" value="individual" checked> Individual Seasons
 		<br>
 		<input id="compare" type="submit" value="Compare"/>
 		<input type="hidden" name="sort" value="pts" />
 	</form>
+	<br>
 </div>
 </body>
 </html>

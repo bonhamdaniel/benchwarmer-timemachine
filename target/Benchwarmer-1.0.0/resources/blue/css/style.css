@@ -5,7 +5,7 @@ body {
 	font-family: Arial;
 }
 
-#tableFrame body, #stattable, #iframe {
+#tableFrame body, #iframe {
 	background-color: white;
 }
 
@@ -31,11 +31,6 @@ header div {
 	font-weight: bold;
 	margin-right: 5%;
 	text-align: right;
-}
-
-#iframe {
-	vertical-overflow: hidden;
-	background-color: white;
 }
 
 #footer { 
@@ -150,7 +145,6 @@ div.tab button.active {
 	background-color: #f2f2f2;
 	color: #00004d;
 	border-radius: 4px;
-	text-align: center;
 }
 
 #statOptions input[type=submit] {
@@ -170,9 +164,14 @@ div.tab button.active {
 	width: 50px;
 }
 
-div.stattable {
+#stattable {
 	margin: auto;
+	display: inline-block;
+	text-align: center;
+	align-content: center;
+	border: none;
 	min-height: 500px;
+	width: 100%;
 }
 
 input {
@@ -208,7 +207,7 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-	background-color: #00004d;
+	background-color: #0000ff;
 	color: white;
 }
 
@@ -218,8 +217,16 @@ th a {
 	font-weight: bold;
 }
 
-th a:hover {
+th, td {
+	padding: 5px;
+}
 
+.leftBorder {
+	border-left: 1px solid #00004d;
+}
+
+.leftDashedBorder {
+	border-left: 1px dotted #00004d;
 }
 
 td {
@@ -240,6 +247,7 @@ td.toi {
 #pages {
 	margin: 5px;
 	text-align: center;
+	display: block;
 }
 
 #pages .clickable:hover {
@@ -258,3 +266,46 @@ td.toi {
 #compare {
 	text-align: center;
 }
+
+/* Tooltip Features */
+.tooltip {
+	position: relative;
+	/*display: block;*/
+	background-color: #00004d;
+	border: none;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	opacity: 0;
+	background-color: white;
+	color: #00004d;
+	text-align: center;
+	padding: 2px;
+	border-radius: 4px;
+	border: 1px solid #ccccff;
+	width: 120px;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -63px;
+	
+	position: absolute;
+	z-index: 1;
+}
+
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #ccccff transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+

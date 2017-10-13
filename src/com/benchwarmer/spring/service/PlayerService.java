@@ -30,4 +30,8 @@ public class PlayerService {
 	public List<Player> getPlayer(String position) {
 		return playerDAO.getPlayer(position);
 	}
+	
+	public List<Player> getPlayers(String position) {
+		return playerDAO.getPlayers(position);
+	}
 }

@@ -17,6 +17,7 @@
 </head>
 <body id="statsmenu">
 	<div id="statOptions">
+		<br>
 		<form action="skatertable.html?" target="tableFrame" method="GET">
 			<label class="title">Adjust </label>
 			<select id="season1" class="season" name="baseSeason">
@@ -62,11 +63,13 @@
 			</select>
 			<label>&emsp;Min GP: </label><input type="number" name="min" min="0" max="82" value="20" width="3">
 			<br>
-			<input id="include" type="checkbox" name="include" disabled />Include skaters from target season
+			<input id="include" type="checkbox" name="include" />
+			<label id="skaterInclude" for="include">Include ${targetS} skater stats for comparison</label>
 			<br>
 			<input type="hidden" name="sort" value="pts" />
 			<input id="convert" type="submit" value="Convert"/>
 		</form>
+		<br>
 	</div>
 </body>
 </html>
